@@ -1,6 +1,6 @@
 # toriest
 
-A new Flutter project.
+Tourist App with Flutter.
 
 ## Getting Started
 
