@@ -42,10 +42,12 @@ class _NaviScreenState extends State<NaviScreen> {
       //   },
       // ),
       bottomNavigationBar: CurvedNavigationBar(
+        color: Colors.blue,
+        backgroundColor: Colors.white,
         items: const [
-          Icon(Icons.menu),
-          Icon(Icons.home),
-          Icon(Icons.settings)
+          Icon(Icons.menu,color: Colors.white),
+          Icon(Icons.home,color: Colors.white),
+          Icon(Icons.settings,color: Colors.white)
         ],
         index: currentIndex,
         onTap: onTaped,
