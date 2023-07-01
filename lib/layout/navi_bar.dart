@@ -14,6 +14,7 @@ class NaviScreen extends StatefulWidget {
 }
 
 class _NaviScreenState extends State<NaviScreen> {
+  final PageController _pageController = PageController();
   int currentIndex = 1;
   // final List<Widget> icons = [
   //   const Icon(Icons.menu,size: 30.0,),
@@ -26,16 +27,29 @@ class _NaviScreenState extends State<NaviScreen> {
     const HomeScreen(),
     const SettingsScreen(),
   ];
+
   void onTaped(int index){
     setState(() {
       currentIndex = index;
     });
   }
 
+  void onItemTaped(int i)
+  {
+    _pageController.jumpToPage(i);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[currentIndex],
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: onTaped,
+        children: screens,
+      ),
+      // body: screens[currentIndex],
+      //................
+
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () {
       //     Navigator.push(context, MaterialPageRoute(builder: (context) => ,))
@@ -43,14 +57,14 @@ class _NaviScreenState extends State<NaviScreen> {
       // ),
       bottomNavigationBar: CurvedNavigationBar(
         color: Colors.blue,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white10,
         items: const [
           Icon(Icons.menu,color: Colors.white),
           Icon(Icons.home,color: Colors.white),
           Icon(Icons.settings,color: Colors.white)
         ],
         index: currentIndex,
-        onTap: onTaped,
+        onTap: onItemTaped,
       ),
     );
   }
